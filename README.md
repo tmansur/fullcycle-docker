@@ -40,6 +40,10 @@ Parâmetros:
 
 `docker exec <comando>`
 
+Exemplo:
+
+- Acessando o bash do container: `docker exec -it <nome-container> bash`
+
 ### Bind mounts
 
 Bind mounts é uma forma de mapearmos diretórios locais detro de containers em execução.
