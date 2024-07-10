@@ -172,3 +172,11 @@ Gerar projeto inicial no diretório do container:
   ~~~
 - Executando o serviço: `node index.js`
 - Acessar o serviço via navegador: localhost:3000
+
+### Multistage Building
+
+Forma de gerar imagens otimizadas.
+
+Dividido em duas ou mais etapas:
+- Estágio inicial de geração da imagem
+- Estágios de otimização da imagem.
