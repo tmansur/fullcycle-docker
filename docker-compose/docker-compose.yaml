@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  app:
+    build:
+      context: node    
+    container_name: app
+    volumes:
+      - ./node:/usr/src/app
+    tty: true    
+    networks:
+      - minharede
+    ports:
+      - "3000:3000"
+    depends_on:
+      # Faz com que o docker-compose suba primeiro o container do mysql, porém,  não espera finalizar para subir o contaier do node)
+      # A esperar pode ser implementada com o dockerize (https://github.com/jwilder/dockerize)
+      - db 
+
+  db:
+    image: mysql:5.7 # Imagem a ser utilizada
+    command: --innodb-use-native-aio=0
+    container_name: db
+    restart: always
+    tty: true
+    volumes:
+      - ./mysql:/var/lib/mysql # Tudo que for gravado na pasta /var/lib/mysql do container será gravado na pasta local /mysql
+    environment:
+      - MYSQL_DATABASE=nodedb
+      - MYSQL_ROOT_PASSWORD=root
+    networks:
+      - minharede
+  
+networks:
+  minharede:
+    driver: bridge

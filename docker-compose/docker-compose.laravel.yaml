@@ -1,0 +1,26 @@
+version: '3'
+
+services: # Configuraçaõ dos serviços por container
+  meularavel:
+    build: 
+      context: ./laravel # Nome da pasta onde está o Dockerfile
+      dockerfile: Dockerfile.prod # Nome do arquivo Dockerfile
+    image: tmansur/laravel:v1 # Nome da imagem a ser gerada
+    container_name: laravel
+    networks:
+      - laranet
+  
+  meunginx:
+    build: 
+      context: ./nginx # Nome da pasta onde está o Dockerfile
+      dockerfile: Dockerfile.prod # Nome do arquivo Dockerfile
+    image: tmansur/nginx:v1 # Nome da imagem a ser gerada
+    container_name: nginx
+    networks:
+      - laranet
+    ports:
+      - "8080:80"
+  
+networks:
+  laranet: # Nome da rede
+    driver: bridge
