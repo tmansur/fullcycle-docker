@@ -23,18 +23,20 @@ Parâmetros:
 `docker run <imagem>`
 
 Parâmetros:
--it --> modo iterativo
--p --> porta a ser publicada para acesso externo [porta-máquina-local:porta-container-docker]
--d --> desvincula o terminal do processo que será executado (o bash não fica travado na execução do serviço)
---name --> nome do container
--v <diretorio-local>:<diretório-container> --> faz o mapeamento de um diretório local para dentro do container
+
+- it --> modo iterativo
+- p --> porta a ser publicada para acesso externo [porta-máquina-local:porta-container-docker]
+- d --> desvincula o terminal do processo que será executado (o bash não fica travado na execução do serviço)
+- --name --> nome do container
+- v <diretorio-local>:<diretório-container> --> faz o mapeamento de um diretório local para dentro do container
 
 #### Removendo container
 
 `docker rm <nome-container>`
 
 Parâmetros:
--f --> força a execução do comando
+
+- f --> força a execução do comando
 
 #### Executando comandos no container
 
@@ -125,7 +127,7 @@ CMD ["<comando>", "<parametro>"] --> comando variável, pode ser substituído ao
 
 ##### Gerando uma imagem
 
-`docker build -t tmansur/<nome-imagem>:<versao> <dockerfile>
+`docker build -t tmansur/<nome-imagem>:<versao> <dockerfile>`
 
 > [!TIP]
 >
@@ -188,7 +190,6 @@ Gerar projeto inicial no diretório do container:
   app.listen(port, () => {
       console.log("Rodando na porta " + port)
   })
-  ~~~
   ```
 
 - Executando o serviço: `node index.js`
